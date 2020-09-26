@@ -192,6 +192,7 @@ cc_binary {
   ],
   defaults: [
     "perfetto_defaults",
+    "has_memfd_backport_defaults",
   ],
   cflags: [
     "-DGOOGLE_PROTOBUF_NO_RTTI",
@@ -406,6 +407,7 @@ cc_library_shared {
   ],
   defaults: [
     "perfetto_defaults",
+    "has_memfd_backport_defaults",
   ],
   cflags: [
     "-DGOOGLE_PROTOBUF_NO_RTTI",
@@ -617,6 +619,7 @@ cc_library_static {
   ],
   defaults: [
     "perfetto_defaults",
+    "has_memfd_backport_defaults",
   ],
   cflags: [
     "-DGOOGLE_PROTOBUF_NO_RTTI",
@@ -752,6 +755,7 @@ cc_binary {
   ],
   defaults: [
     "perfetto_defaults",
+    "has_memfd_backport_defaults",
   ],
   cflags: [
     "-DGOOGLE_PROTOBUF_NO_RTTI",
@@ -8291,6 +8295,7 @@ cc_binary {
   ],
   defaults: [
     "perfetto_defaults",
+    "has_memfd_backport_defaults",
   ],
   cflags: [
     "-DGOOGLE_PROTOBUF_NO_RTTI",
@@ -8440,6 +8445,7 @@ cc_binary {
   ],
   defaults: [
     "perfetto_defaults",
+    "has_memfd_backport_defaults",
   ],
   cflags: [
     "-DGOOGLE_PROTOBUF_NO_RTTI",
