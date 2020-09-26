@@ -27,7 +27,9 @@
 #include <stdio.h>
 #include <string.h>
 #include <sys/syscall.h>
+#if !defined(HAS_MEMFD_BACKPORT)
 #include <sys/utsname.h>
+#endif
 #include <unistd.h>
 
 // Some android build bots use a sysroot that doesn't support memfd when
@@ -49,6 +51,7 @@
 namespace perfetto {
 bool HasMemfdSupport() {
   static bool kSupportsMemfd = [] {
+#if !defined(HAS_MEMFD_BACKPORT)
     // Check kernel version supports memfd_create(). Some older kernels segfault
     // executing memfd_create() rather than returning ENOSYS (b/116769556).
     static constexpr int kRequiredMajor = 3;
@@ -61,6 +64,7 @@ bool HasMemfdSupport() {
           (major == kRequiredMajor && minor < kRequiredMinor)))) {
       return false;
     }
+#endif
 
     base::ScopedFile fd;
     fd.reset(static_cast<int>(syscall(__NR_memfd_create, "perfetto_shmem",

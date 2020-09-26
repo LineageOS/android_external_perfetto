@@ -1238,6 +1238,9 @@ cc_library_static {
 // GN: //gn:default_deps
 cc_defaults {
   name: "perfetto_defaults",
+  defaults: [
+    "has_memfd_backport_defaults",
+  ],
   cflags: [
     "-O2",
     "-Wno-error=return-type",

@@ -44,10 +44,7 @@ std::unique_ptr<PosixSharedMemory> PosixSharedMemory::Create(size_t size) {
       CreateMemfd("perfetto_shmem", MFD_CLOEXEC | MFD_ALLOW_SEALING);
   bool is_memfd = !!fd;
 
-  // In-tree builds only allow mem_fd, so we can inspect the seals to verify the
-  // fd is appropriately sealed. We'll crash in the PERFETTO_CHECK(fd) below if
-  // memfd_create failed.
-#if !PERFETTO_BUILDFLAG(PERFETTO_ANDROID_BUILD)
+#if !defined(HAS_MEMFD_BACKPORT)
   if (!fd) {
     // TODO: if this fails on Android we should fall back on ashmem.
     PERFETTO_DPLOG("memfd_create() failed");
@@ -72,6 +69,7 @@ std::unique_ptr<PosixSharedMemory> PosixSharedMemory::Create(size_t size) {
 std::unique_ptr<PosixSharedMemory> PosixSharedMemory::AttachToFd(
     base::ScopedFile fd,
     bool require_seals_if_supported) {
+#if defined(HAS_MEMFD_BACKPORT)
   bool requires_seals = require_seals_if_supported;
 
 #if PERFETTO_BUILDFLAG(PERFETTO_ANDROID_BUILD)
@@ -84,6 +82,9 @@ std::unique_ptr<PosixSharedMemory> PosixSharedMemory::AttachToFd(
 #endif
 
   if (requires_seals) {
+#else
+  if (require_seals_if_supported && HasMemfdSupport()) {
+#endif
     // If the system supports memfd, we require a sealed memfd.
     int res = fcntl(*fd, F_GET_SEALS);
     if (res == -1 || (res & kFileSeals) != kFileSeals) {
