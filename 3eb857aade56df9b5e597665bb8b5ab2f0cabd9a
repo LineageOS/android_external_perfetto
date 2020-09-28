@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed64113d_79f75044",
+        "filename": "src/tracing/ipc/memfd.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 17401
+      },
+      "writtenOn": "2020-09-28T06:47:15Z",
+      "side": 1,
+      "message": "remove this too",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 24
+      },
+      "revId": "3eb857aade56df9b5e597665bb8b5ab2f0cabd9a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
