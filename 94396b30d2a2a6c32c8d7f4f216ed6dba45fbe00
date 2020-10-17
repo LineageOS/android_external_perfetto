@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e58f77ad_27690a5f",
+        "filename": "Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1244,
+      "author": {
+        "id": 18205
+      },
+      "writtenOn": "2020-10-17T20:28:33Z",
+      "side": 1,
+      "message": "why don\u0027t you add it once here?",
+      "revId": "94396b30d2a2a6c32c8d7f4f216ed6dba45fbe00",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
